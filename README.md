@@ -106,6 +106,8 @@ Template will be published to NuGet.org when changes are made to `CleanArchitect
 
 ## 🎉 Getting Started
 
+### Installing the Template
+
 1. Install the SSW CA template
 
 ```bash
@@ -135,7 +137,9 @@ Alternatively, you can specify the `name` and `output` directory as follows:
 dotnet new ssw-ca --name {{SolutionName}} --output .\
 ```
 
-4. Create a query
+### Adding a Feature
+
+1. Create a query
 
 ```bash
 cd src/Application/Features
@@ -144,7 +148,7 @@ cd {{FeatureName}}
 dotnet new ssw-ca-query --name {{QueryName}} --entityName {{Entity}} --namespaceRoot {{Namespace}}
 ```
 
-5. Create a command
+2. Create a command
 
 ```bash
 cd src/Application/Features
@@ -152,3 +156,19 @@ mkdir {{FeatureName}}
 cd {{FeatureName}}
 dotnet new ssw-ca-command --name {{CommandName}} --entityName {{Entity}} --namespaceRoot {{Namespace}}
 ```
+
+### Running the Solution
+
+1. Start dockerized SQL Server
+
+```bash
+docker compose up
+```
+
+2. Run the solution
+
+```bash
+dotnet run
+```
+
+> **NOTE:** The first time you run the solution, it may take a while to download the docker images, create the DB, and seed the data.
