@@ -40,7 +40,7 @@ app.UseSwaggerUi3(settings => settings.DocumentPath = "/api/specification.json")
 
 app.UseRouting();
 
-app.UseExceptionFilter();
+app.UseExceptionHandler();
 
 app.MapTodoItemEndpoints();
 

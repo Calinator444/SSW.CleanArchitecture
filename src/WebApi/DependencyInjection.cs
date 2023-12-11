@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using SSW.CleanArchitecture.Application.Common.Interfaces;
 using SSW.CleanArchitecture.Infrastructure.Persistence;
+using SSW.CleanArchitecture.WebApi.Filters;
 using SSW.CleanArchitecture.WebApi.HealthChecks.EntityFrameworkDbContextHealthCheck;
 using SSW.CleanArchitecture.WebApi.Services;
 
@@ -13,6 +14,8 @@ public static class DependencyInjection
     {
         services.AddHttpContextAccessor();
         services.AddScoped<ICurrentUserService, CurrentUserService>();
+        services.AddExceptionHandler<GlobalExceptionHandler>();
+        services.AddProblemDetails();
 
         services.AddOpenApiDocument(configure => configure.Title = "CleanArchitecture API");
         services.AddEndpointsApiExplorer();
